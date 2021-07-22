@@ -1,0 +1,34 @@
+fun main() {
+    val inputString = "Occurrences"
+    var keyByIndex: Char?
+    var valueOfElement: Int?
+
+    //Creating a HashMap containing char as a key and occurrences as a value
+    val charCountMap = LinkedHashMap<Char, Int>()
+
+    //Converting given string to char array
+    val strArray: CharArray = inputString.toCharArray()
+
+
+    //checking each char of strArray
+    for (c in strArray) {
+        if (charCountMap.containsKey(c)) {
+            //If char 'c' is present in charCountMap, incrementing it's count by 1
+            charCountMap[c] = charCountMap[c]!! + 1
+        } else {
+            //If char 'c' is not present in charCountMap,
+            //putting 'c' into charCountMap with 1 as it's value
+            charCountMap[c] = 1
+        }
+    }
+    //creating string final result
+    var stringBuilder = String()
+    //getting key value form hashmap
+    for (con in 0 until charCountMap.size) {
+        keyByIndex = charCountMap.keys.elementAt(con) // Get key by index.
+        valueOfElement = charCountMap.getValue(keyByIndex) // Get value
+        val finalString: String = keyByIndex + "" + valueOfElement;
+        stringBuilder = stringBuilder.plus(finalString);
+    }
+    println(stringBuilder.toUpperCase())
+}
